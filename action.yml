@@ -2,17 +2,15 @@ name: 'Rocket.Chat Notification'
 description: 'Send a message to Rocket.Chat'
 inputs:
   user:
-    description: 'The username to login'
+    description: 'The username to login to your rocket.chat server'
     required: true
     default: ''
   password:
-    description: 'The password to login'
+    description: 'The password to login to your rocket.chat server'
     required: true
-    default: ''
   message:
     description: 'The message you want to send'
     required: true
-    default: ''
   server:
     description: 'Your rocket.chat server'
     required: false
@@ -21,6 +19,10 @@ inputs:
     description: 'The channel you want to write to'
     required: false
     default: 'GENERAL'
+  code:
+    description: 'Set it to true if you wish to have a code block'
+    required: false
+    default: 'false'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -30,3 +32,4 @@ runs:
     - ${{ inputs.message }}
     - ${{ inputs.server }}
     - ${{ inputs.channel }}
+    - ${{ inputs.code }}
