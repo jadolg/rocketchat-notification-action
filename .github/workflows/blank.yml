@@ -1,0 +1,10 @@
+on: [push]
+
+jobs:
+  rocketchat_job:
+    runs-on: ubuntu-latest
+    name: Push notification to rocket.chat
+    steps:
+    - name: Push notification to rocket.chat
+      id: rc
+      uses: jadolg/rocketchat-notification-action@0.0.1
