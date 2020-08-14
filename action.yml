@@ -1,4 +1,4 @@
-name: 'Rocket.Chat Notification'
+name: 'Rocket.Chat notification with credentials'
 description: 'Send a message to Rocket.Chat'
 inputs:
   user:
