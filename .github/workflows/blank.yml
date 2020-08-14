@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Push notification to rocket.chat
       id: notification
-      uses: jadolg/rocketchat-notification-action@0.0.7
+      uses: jadolg/rocketchat-notification-action@0.0.8
       with:
         server: ${{ secrets.ROCKETCHAT_SERVER }}
         message: Hello world
