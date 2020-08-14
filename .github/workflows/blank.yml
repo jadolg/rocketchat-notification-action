@@ -6,10 +6,11 @@ jobs:
     name: Push notification to rocket.chat
     steps:
     - name: Push notification to rocket.chat
-      id: rc
-      uses: jadolg/rocketchat-notification-action@0.0.6
+      id: notification
+      uses: jadolg/rocketchat-notification-action@0.0.7
       with:
-        server: server
-        message: message
-        user: user
-        password: password
+        server: ${{ secrets.ROCKETCHAT_SERVER }}
+        message: Hello world
+        user: ${{ secrets.ROCKETCHAT_USER }}
+        password: ${{ secrets.ROCKETCHAT_PASSWORD }}
+        channel: akiel-test
