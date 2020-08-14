@@ -1,5 +1,8 @@
 name: 'Rocket.Chat notification with credentials'
 description: 'Send a message to Rocket.Chat'
+branding:
+  icon: 'bell'  
+  color: 'red'
 inputs:
   user:
     description: 'The username to login to your rocket.chat server'
