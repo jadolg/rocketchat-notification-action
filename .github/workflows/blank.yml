@@ -7,4 +7,4 @@ jobs:
     steps:
     - name: Push notification to rocket.chat
       id: rc
-      uses: jadolg/rocketchat-notification-action@0.0.1
+      uses: jadolg/rocketchat-notification-action@0.0.2
