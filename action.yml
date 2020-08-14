@@ -1,9 +1,32 @@
-# action.yml
 name: 'Rocket.Chat Notification'
 description: 'Send a message to Rocket.Chat'
-outputs:
-  response_code:
-    description: 'The response code for the http call'
+inputs:
+  user:
+    description: 'The username to login'
+    required: true
+    default: ''
+  password:
+    description: 'The password to login'
+    required: true
+    default: ''
+  message:
+    description: 'The message you want to send'
+    required: true
+    default: ''
+  server:
+    description: 'Your rocket.chat server'
+    required: false
+    default: 'https://open.rocket.chat'
+  channel:
+    description: 'The channel you want to write to'
+    required: false
+    default: 'GENERAL'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.user }}
+    - ${{ inputs.password }}
+    - ${{ inputs.message }}
+    - ${{ inputs.server }}
+    - ${{ inputs.channel }}

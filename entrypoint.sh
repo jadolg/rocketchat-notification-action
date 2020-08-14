@@ -1,2 +1,2 @@
-#!/usr/bin/env sh
-echo "something going on here"
+#!/usr/bin/env bash
+echo $1 $2 $3 $4 $5
