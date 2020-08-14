@@ -9,7 +9,6 @@ jobs:
       id: rc
       uses: jadolg/rocketchat-notification-action@0.0.6
       with:
-        channel: channel
         server: server
         message: message
         user: user
