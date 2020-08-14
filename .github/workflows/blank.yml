@@ -8,9 +8,10 @@ jobs:
     - name: Push notification to rocket.chat
       id: notification
       uses: jadolg/rocketchat-notification-action@0.0.11
+      if: ${{ failure() }}
       with:
         server: ${{ secrets.ROCKETCHAT_SERVER }}
-        message: Hello world
+        message: Looks like something went wrong!
         user: ${{ secrets.ROCKETCHAT_USER }}
         password: ${{ secrets.ROCKETCHAT_PASSWORD }}
         channel: akiel-test
