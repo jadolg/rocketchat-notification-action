@@ -1,0 +1,9 @@
+# action.yml
+name: 'Rocket.Chat Notification'
+description: 'Send a message to Rocket.Chat'
+outputs:
+  response_code:
+    description: 'The response code for the http call'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
