@@ -1,2 +1,6 @@
 #!/usr/bin/env sh
-rocketchat-notification -u "$1" -p "$2" -m "$3" -s "$4" -c "$5" -code "$6"
+if $6 == "true"; then
+    rocketchat-notification -u "$1" -p "$2" -m "$3" -s "$4" -c "$5" -code
+else
+    rocketchat-notification -u "$1" -p "$2" -m "$3" -s "$4" -c "$5"
+fi
