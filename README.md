@@ -30,6 +30,8 @@ Set it to true if you wish to have a code block. Default `"false"`.
 
 ## Example usage
 
+### Push a chat notification when your job fails
+
 ```yaml
 on: [push]
 
@@ -48,4 +50,28 @@ jobs:
         user: ${{ secrets.ROCKETCHAT_USER }}
         password: ${{ secrets.ROCKETCHAT_PASSWORD }}
         channel: alerts
+```
+
+### Push a chat notification when someone opens a pull request in your project
+
+```yaml
+name: PR_alert
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches: [ master ]
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Push notification when a Pull Request is created
+      uses: jadolg/rocketchat-notification-action@v1.0.1
+      with:
+        message: Woop! Woop! A new Pull Request has being created at ${{ github.event.pull_request.html_url }}
+        user: ${{ secrets.ROCKETCHAT_USER }}
+        password: ${{ secrets.ROCKETCHAT_PASSWORD }}
+        channel: python_rocketchat_api
+        code: false
 ```
