@@ -41,7 +41,7 @@ jobs:
     - name: Push notification to rocket.chat if the job failed
       id: error-notification
       if: ${{ failure() }}
-      uses: jadolg/rocketchat-notification-action@v1.0.0
+      uses: jadolg/rocketchat-notification-action@v1.0.1
       with:
         server: ${{ secrets.ROCKETCHAT_SERVER }}
         message: Wooops! Looks like something went wrong!
