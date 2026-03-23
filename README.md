@@ -24,10 +24,6 @@ Your rocket.chat server. Default `"https://open.rocket.chat"`.
 
 The channel you want to write to. Default `"GENERAL"`.
 
-### `code`
-
-Set it to true if you wish to have a code block. Default `"false"`.
-
 ## Example usage
 
 ### Push a chat notification when your job fails
@@ -73,5 +69,4 @@ jobs:
         user: ${{ secrets.ROCKETCHAT_USER }}
         password: ${{ secrets.ROCKETCHAT_PASSWORD }}
         channel: python_rocketchat_api
-        code: false
 ```
