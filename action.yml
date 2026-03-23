@@ -1,15 +1,14 @@
-name: "Rocket.Chat notification with credentials"
+name: "Rocket.Chat notification"
 description: "Send a message to Rocket.Chat"
 branding:
   icon: "bell"
   color: "red"
 inputs:
-  user:
-    description: "The username to login to your rocket.chat server"
+  auth-token:
+    description: "Personal access token for your rocket.chat server"
     required: true
-    default: ""
-  password:
-    description: "The password to login to your rocket.chat server"
+  user-id:
+    description: "User ID associated with the personal access token"
     required: true
   message:
     description: "The message you want to send"
@@ -29,9 +28,8 @@ runs:
       shell: bash
       run: ${{ github.action_path }}/entrypoint.sh
       env:
-        INPUT_USER: ${{ inputs.user }}
-        INPUT_PASSWORD: ${{ inputs.password }}
+        INPUT_AUTH_TOKEN: ${{ inputs.auth-token }}
+        INPUT_USER_ID: ${{ inputs.user-id }}
         INPUT_MESSAGE: ${{ inputs.message }}
         INPUT_SERVER: ${{ inputs.server }}
         INPUT_CHANNEL: ${{ inputs.channel }}
-        INPUT_CODE: ${{ inputs.code }}

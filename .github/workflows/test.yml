@@ -14,7 +14,7 @@ jobs:
         uses: ./
         with:
           server: ${{ secrets.ROCKETCHAT_SERVER }}
-          user: ${{ secrets.ROCKETCHAT_USER }}
-          password: ${{ secrets.ROCKETCHAT_PASSWORD }}
+          auth-token: ${{ secrets.ROCKETCHAT_AUTH_TOKEN }}
+          user-id: ${{ secrets.ROCKETCHAT_USER_ID }}
           channel: "#test-notifications-akiel"
           message: "Test plain message from ${{ github.repository }}@${{ github.sha }}"
