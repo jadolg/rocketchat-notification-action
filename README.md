@@ -1,16 +1,17 @@
 # Rocket.Chat notifications GitHub action
 
-This action will write a message on your rocket.chat server using credentials instead of a webhook.
+This action sends a message to a Rocket.Chat server using a personal access token.
+Read <https://docs.rocket.chat/docs/manage-personal-access-tokens> to obtain a new access token.
 
 ## Inputs
 
-### `user`
+### `auth-token`
 
-**Required** The username to login to your rocket.chat server.
+**Required** Personal access token for your Rocket.Chat server.
 
-### `password`
+### `user-id`
 
-**Required** The password to login to your rocket.chat server.
+**Required** User ID associated with the personal access token.
 
 ### `message`
 
@@ -39,12 +40,12 @@ jobs:
     - name: Push notification to rocket.chat if the job failed
       id: error-notification
       if: ${{ failure() }}
-      uses: jadolg/rocketchat-notification-action@v2.0.0
+      uses: jadolg/rocketchat-notification-action@v3.0.0
       with:
         server: ${{ secrets.ROCKETCHAT_SERVER }}
         message: Wooops! Looks like something went wrong!
-        user: ${{ secrets.ROCKETCHAT_USER }}
-        password: ${{ secrets.ROCKETCHAT_PASSWORD }}
+        auth-token: ${{ secrets.ROCKETCHAT_AUTH_TOKEN }}
+        user-id: ${{ secrets.ROCKETCHAT_USER_ID }}
         channel: alerts
 ```
 
@@ -63,10 +64,10 @@ jobs:
 
     steps:
     - name: Push notification when a Pull Request is created
-      uses: jadolg/rocketchat-notification-action@v2.0.0
+      uses: jadolg/rocketchat-notification-action@v3.0.0
       with:
         message: Woop! Woop! A new Pull Request has being created at ${{ github.event.pull_request.html_url }}
-        user: ${{ secrets.ROCKETCHAT_USER }}
-        password: ${{ secrets.ROCKETCHAT_PASSWORD }}
+        auth-token: ${{ secrets.ROCKETCHAT_AUTH_TOKEN }}
+        user-id: ${{ secrets.ROCKETCHAT_USER_ID }}
         channel: python_rocketchat_api
 ```
