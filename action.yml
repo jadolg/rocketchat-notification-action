@@ -1,38 +1,37 @@
-name: 'Rocket.Chat notification with credentials'
-description: 'Send a message to Rocket.Chat'
+name: "Rocket.Chat notification with credentials"
+description: "Send a message to Rocket.Chat"
 branding:
-  icon: 'bell'  
-  color: 'red'
+  icon: "bell"
+  color: "red"
 inputs:
   user:
-    description: 'The username to login to your rocket.chat server'
+    description: "The username to login to your rocket.chat server"
     required: true
-    default: ''
+    default: ""
   password:
-    description: 'The password to login to your rocket.chat server'
+    description: "The password to login to your rocket.chat server"
     required: true
   message:
-    description: 'The message you want to send'
+    description: "The message you want to send"
     required: true
   server:
-    description: 'Your rocket.chat server'
+    description: "Your rocket.chat server"
     required: false
-    default: 'https://open.rocket.chat'
+    default: "https://open.rocket.chat"
   channel:
-    description: 'The channel you want to write to'
+    description: "The channel you want to write to"
     required: false
-    default: 'GENERAL'
-  code:
-    description: 'Set it to true if you wish to have a code block'
-    required: false
-    default: 'false'
+    default: "GENERAL"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.user }}
-    - ${{ inputs.password }}
-    - ${{ inputs.message }}
-    - ${{ inputs.server }}
-    - ${{ inputs.channel }}
-    - ${{ inputs.code }}
+  using: "composite"
+  steps:
+    - name: Send Rocket.Chat notification
+      shell: bash
+      run: ${{ github.action_path }}/entrypoint.sh
+      env:
+        INPUT_USER: ${{ inputs.user }}
+        INPUT_PASSWORD: ${{ inputs.password }}
+        INPUT_MESSAGE: ${{ inputs.message }}
+        INPUT_SERVER: ${{ inputs.server }}
+        INPUT_CHANNEL: ${{ inputs.channel }}
+        INPUT_CODE: ${{ inputs.code }}
