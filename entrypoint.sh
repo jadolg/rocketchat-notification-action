@@ -47,3 +47,14 @@ if [ "$SUCCESS" != "true" ]; then
 fi
 
 echo -e "${GREEN}${BOLD}✓ Message sent${RESET} — channel: ${BOLD}${CHANNEL_NAME}${RESET}, sender: ${SENDER}, id: ${MSG_ID}"
+
+LOGOUT_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+  -H "X-Auth-Token: ${AUTH_TOKEN}" \
+  -H "X-User-Id: ${USER_ID}" \
+  "${SERVER}/api/v1/logout") || true
+
+if [ "${LOGOUT_STATUS}" = "200" ]; then
+  echo -e "${GREEN}✓ Logged out${RESET}"
+else
+  echo -e "${RED}✗ Logout failed${RESET} — HTTP ${LOGOUT_STATUS}"
+fi
