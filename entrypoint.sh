@@ -27,6 +27,8 @@ if [ -z "$AUTH_TOKEN" ] || [ "$AUTH_TOKEN" = "null" ]; then
   exit 1
 fi
 
+echo -e "${GREEN}✓ Logged in${RESET} — ${USER}@${SERVER}"
+
 RESPONSE=$(curl -s -X POST \
   -H "Content-Type: application/json" \
   -H "X-Auth-Token: ${AUTH_TOKEN}" \
