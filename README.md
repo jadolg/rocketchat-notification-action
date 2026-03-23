@@ -39,7 +39,7 @@ jobs:
     - name: Push notification to rocket.chat if the job failed
       id: error-notification
       if: ${{ failure() }}
-      uses: jadolg/rocketchat-notification-action@v1.0.1
+      uses: jadolg/rocketchat-notification-action@v2.0.0
       with:
         server: ${{ secrets.ROCKETCHAT_SERVER }}
         message: Wooops! Looks like something went wrong!
@@ -63,7 +63,7 @@ jobs:
 
     steps:
     - name: Push notification when a Pull Request is created
-      uses: jadolg/rocketchat-notification-action@v1.0.1
+      uses: jadolg/rocketchat-notification-action@v2.0.0
       with:
         message: Woop! Woop! A new Pull Request has being created at ${{ github.event.pull_request.html_url }}
         user: ${{ secrets.ROCKETCHAT_USER }}
